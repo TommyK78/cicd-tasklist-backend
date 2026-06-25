@@ -1,0 +1,11 @@
+node_modules
+dist
+coverage
+reports
+.scannerwork
+.git
+.gitignore
+*.test.ts
+.env
+Dockerfile
+.dockerignore
