@@ -4,7 +4,7 @@
 //  et Trivy préinstallés ; serveur SonarQube "sonarqube-server-1").
 // ---------------------------------------------------------------------
 //  Credential Jenkins requis (jamais en clair dans le code) :
-//    - dockerhub-credentials : "Username with password" (login Docker Hub)
+//    - dockerhub-tommyk78 : "Username with password" (login Docker Hub)
 //  Le token SonarQube est injecté automatiquement par withSonarQubeEnv.
 // =====================================================================
 
@@ -117,7 +117,7 @@ pipeline {
         stage('Publish to Docker Hub') {
             steps {
                 echo 'Publishing image to Docker Hub...'
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials',
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-tommyk78',
                                                    usernameVariable: 'DOCKER_USER',
                                                    passwordVariable: 'DOCKER_PASS')]) {
                     sh '''
