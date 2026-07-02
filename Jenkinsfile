@@ -75,7 +75,7 @@ pipeline {
             steps {
                 echo 'Running SonarQube analysis...'
                 // Le scanner lit sonar-project.properties ; host + token injectés par withSonarQubeEnv
-                withSonarQubeEnv('sonarqube-server-1') {
+                withSonarQubeEnv('sonarqube-server-2') {
                     sh 'npx sonarqube-scanner'
                 }
             }
