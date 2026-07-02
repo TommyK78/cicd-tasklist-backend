@@ -101,11 +101,11 @@ pipeline {
             steps {
                 echo 'Scanning Docker image with Trivy...'
                 // Rapport JSON des vulnérabilités HIGH/CRITICAL
-                sh 'trivy image --format json --output trivy-report.json --severity HIGH,CRITICAL $IMAGE_NAME:$BUILD_NUMBER'
+                sh 'trivy image --cache-dir "$WORKSPACE/.trivycache" --format json --output trivy-report.json --severity HIGH,CRITICAL $IMAGE_NAME:$BUILD_NUMBER'
                 // Génération du SBOM au format SPDX
-                sh 'trivy image --format spdx-json --output sbom-spdx.json $IMAGE_NAME:$BUILD_NUMBER'
+                sh 'trivy image --cache-dir "$WORKSPACE/.trivycache" --format spdx-json --output sbom-spdx.json $IMAGE_NAME:$BUILD_NUMBER'
                 // Résumé lisible dans la console
-                sh 'trivy image --format table --severity HIGH,CRITICAL $IMAGE_NAME:$BUILD_NUMBER'
+                sh 'trivy image --cache-dir "$WORKSPACE/.trivycache" --format table --severity HIGH,CRITICAL $IMAGE_NAME:$BUILD_NUMBER'
             }
             post {
                 always {
